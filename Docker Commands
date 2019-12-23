@@ -1,0 +1,34 @@
+##https://docs.docker.com/engine/reference/commandline/container/#########################################################################
+
+sudo usermod -a -G docker vinayak		-- give permissions to docker for current user
+sudo apt install net-tools			-- Install net tools for ifconfig
+sudo apt install curl				-- install curl command, used to transfer data to or from a server
+systemctl start docker				-- start docker server/demon
+docker --help					-- help, add --help next to any commands
+docker pull nginx				-- pull specified image from docker hub
+docker images					-- list availale images
+docker ps					-- list running containers
+docker ps -a					-- list (-a = all) all the containers irrespective of status
+docker run -dt -p 80:80 nginx			-- run image container on specified port (-d = detach/run in background, -t = terminal)
+docker run --name myng -dt -p 80:80 nginx	-- run named image container on specified port (host port --> container port)
+docker run -dt -p nginx	sleep 5			-- run container with default container command
+docker run -dt --rm -p nginx sleep 5		-- auto remove (--rm) container once comand execution done.
+restart docker					-- restrat docker demon/server
+docker run -dt -p --restart unless-stoped nginx	-- run container with restart policy (no/on-failure/unless-stopped/always)
+docker stop c135de13873c			-- stop running container
+docker container stop $(docker container ls -aq)-- stop all running containers at once
+curl -i 172.17.0.1:80				-- check responce from running container
+netstat -ntlp					-- check network statistics on all network activities
+ifconfig					-- displays all network interfaces currently in operation
+docker inspect nginx				-- display al the configuration of image/container
+docker container rm myng			-- remove specified container. use -f for force remove running container.
+docker container rm $(docker container ls -aq)	-- remove all the containers
+docker container exec				-- execute commands under running container
+docker container exec -it nginx bash		-- execute bash command under conning container (-i = interactive/input, -t=tty)
+which						-- shows location of command
+df -h						-- disk usages utilization
+docker system df				-- docker images/container disk usages utilization. -v for component level usage.
+
+
+
+
